@@ -1,5 +1,6 @@
 package com.store.DTO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProductSoldMessageDTO {
@@ -136,6 +137,24 @@ public class ProductSoldMessageDTO {
 
 	public void setOrderCode(String orderCode) {
 		this.orderCode = orderCode;
+	}
+
+	@Override
+	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		return new StringBuffer(" Order Code : ").append(this.orderCode)
+				.append(" DateTime Order : ").append(sdf.format(this.orderDateTime))
+				.append(" Quantity : ").append(this.quantity)
+				.append(" Weight : ").append(this.unitWeight)
+				.append(" Full Name : ").append(this.shipFullName)
+				.append(" City : ").append(this.shipCity)
+				.append(" State : ").append(this.shipState)
+				.append(" ZIP : ").append(this.shipZip)
+				.append(" Phone : ").append(this.shipPhone)
+				.append(" Country : ").append(this.shipCountry)
+				.append(" Address line 1 : ").append(this.shipAddress)
+				.append(" Address line 2 : ").append(this.shipAddress2)
+				.toString();
 	}
 	
 }
