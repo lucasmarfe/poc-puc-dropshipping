@@ -21,4 +21,12 @@ Abaixo a reprodução dos passos até o ponto necessário para a presente POC:
     git clone https://github.com/confluentinc/cp-docker-images
     cd cp-docker-images
     git checkout 5.2.1-post
+    cd examples/cp-all-in-one/
+    docker-compose up -d --build
 ```
+Verifique que todos os containers estão rodando:
+```sh
+    docker-compose ps
+```
+Acesse a interface web no endereço:
+http://localhost:9021/
