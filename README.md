@@ -18,15 +18,15 @@ A confluent platform pode ser executada seguindo os passos descritos em: https:/
 
 Abaixo a reprodução dos passos até o ponto necessário para a presente POC:
 ```sh
-    git clone https://github.com/confluentinc/cp-docker-images
-    cd cp-docker-images
-    git checkout 5.2.1-post
-    cd examples/cp-all-in-one/
-    docker-compose up -d --build
+git clone https://github.com/confluentinc/cp-docker-images
+cd cp-docker-images
+git checkout 5.2.1-post
+cd examples/cp-all-in-one/
+docker-compose up -d --build
 ```
 Verifique que todos os containers estão rodando:
 ```sh
-    docker-compose ps
+docker-compose ps
 ```
 Acesse a interface web no endereço:
 http://localhost:9021/
@@ -37,7 +37,15 @@ Para executar o banco de dados MySQL utilizado no projeto, foi disponibilizado u
 
 A pasta raiz do projeto possui a pasta [docker](docker)
 ```sh
-    cd docker
-    docker build -t mysql-dropshipping .
-    docker run -d -p 3306:3306 --name mysql-dropshipping -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_ROOT_HOST=% mysql-dropshipping
+cd docker
+docker build -t mysql-dropshipping .
+docker run -d -p 3306:3306 --name mysql-dropshipping -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_ROOT_HOST=% mysql-dropshipping
 ```    
+Aguarde o container estar apto a receber solicitações, visualizando os logs do docker:
+```sh
+docker logs -f mysql-dropshipping
+```
+Verifique se o container contendo o database está executando e pronto para executar tarefas (Senha setada nos passos anteriores):
+```sh
+mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p
+```
