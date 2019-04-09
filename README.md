@@ -13,7 +13,12 @@ Prova de conceito para o sistema de controle de vendas na modalidade dropshippin
       ```
 # Passo 1) Confluent platform
 
-Confluent platform é 
+Confluent platform é um conjunto de ferramentas open source construído no topo do Apache kafka para prover facilidades para administração e monitoramento do cluster.
+A confluent platform pode ser executada seguindo os passos descritos em: https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html#ce-docker-quickstart
 
-  - Type some Markdown on the left
-  - See HTML in the right
+Abaixo a reprodução dos passos até o ponto necessário para a presente POC:
+```sh
+    git clone https://github.com/confluentinc/cp-docker-images
+    cd cp-docker-images
+    git checkout 5.2.1-post
+```
