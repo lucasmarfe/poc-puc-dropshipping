@@ -30,3 +30,9 @@ Verifique que todos os containers estão rodando:
 ```
 Acesse a interface web no endereço:
 http://localhost:9021/
+
+# Passo 2) MySQL Database
+
+Para executar o banco de dados MySQL utilizado no projeto, foi disponibilizado um Dockerfile capaz de iniciar um container com o MySQL e executar scripts de criação e inserção de dados.
+
+A pasta raiz do projeto possui a pasta docker  [/docker]
