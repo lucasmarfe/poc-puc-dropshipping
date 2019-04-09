@@ -1,0 +1,54 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+	var url = 'http://localhost:8080/POCDropshipping/rest/jsonServices/send'
+	function makeRequest()
+	{
+	    var data = JSON.parse(document.forms["frm1"]["fname"].value);
+	    //var data = JSON.parse('{"firstName":"carlos","lastName":"Diaz","age":22,"id":1}');
+
+	    $.ajax({
+	        'url': url,
+	        'method': 'POST',
+	        'dataType': 'json',
+	        'processData': false,
+	        'contentType': 'application/json; charset=utf-8',
+	        'data': JSON.stringify(data),//data,//JSON.stringify(data),
+	        'timeout': 60000,
+	        'success': function(data){
+	            alert("device control succeeded");
+	        },
+	        'error': function (result, textStatus, errorThrown) {
+                console.log(result);
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+	        
+	        //traditional: true,
+	        
+	        
+	    });
+	}
+</script>
+<head>
+    <meta charset="utf-8"/>
+    <!-- The rest of your page's header here -->
+</head>
+
+<body>
+	<h1>POC Caso de Uso - XXXXX</h1>
+	
+	<!-- <form name="frm1" id="yourTextBox" onsubmit="makeRequest()">
+		<input type="text" name="fname">
+		<input type="submit" value="Submit">
+	</form> -->
+
+	<form name="frm1" id="txjson" action="rest/jsonServices/send" method="post" onsubmit="makeRequest()">
+		<p>
+			Insira o JSON referente a uma compra: <br> 
+			<textarea rows = "5" cols = "80" name="fname"></textarea>
+		</p>
+		<input type="submit" value="Simular compra"/>
+	</form>
+
+</body>
+</html>

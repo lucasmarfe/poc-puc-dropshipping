@@ -1,0 +1,10 @@
+docker run -p 3306:3306 --name mysql-dropshipping -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_ROOT_HOST=% -d mysql:latest
+docker stop mysql-dropshipping && \
+docker rm mysql-dropshipping && \
+docker rmi mysql-dropshipping
+
+
+docker build -t mysql-dropshipping .
+docker run -d -p 3306:3306 --name mysql-dropshipping -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_ROOT_HOST=% mysql-dropshipping
+docker logs -f mysql-dropshipping
+mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p

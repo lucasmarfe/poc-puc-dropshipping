@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.store.Model.Provider" table="PROVIDERS">
+		<id name="id" type="int" column="ID">
+			<generator class="assigned" />
+		</id>
+		<property name="name">
+			<column name="Name" />
+		</property>
+		<property name="city">
+			<column name="City" />
+		</property>
+		<property name="state">
+			<column name="State" />
+		</property>
+		<property name="zip">
+			<column name="Zip" />
+		</property>
+		<property name="email">
+			<column name="Email" />
+		</property>
+		<property name="registrationDate" type="date">
+			<column name="RegistrationDate" />
+		</property>
+		<property name="phone">
+			<column name="Phone" />
+		</property>
+		<property name="fax">
+			<column name="Fax" />
+		</property>
+		<property name="country">
+			<column name="Country" />
+		</property>
+		<property name="address">
+			<column name="Address" />
+		</property>
+		<property name="address2">
+			<column name="Address2" />
+		</property>
+		<property name="CNPJ">
+			<column name="CNPJ" />
+		</property>
+		<property name="topicName_Orders">
+			<column name="TopicName_Orders" />
+		</property>
+		<property name="topicName_Shipping">
+			<column name="TopicName_Shipping" />
+		</property>
+	</class>
+</hibernate-mapping>

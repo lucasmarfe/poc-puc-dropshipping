@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.store.Model.Order" table="ORDERS">
+		<id name="id" type="int" column="ID">
+			<generator class="increment" />
+		</id>
+		<property name="ClientID">
+			<column name="ClientID" />
+		</property>
+		<property name="shipAddressID">
+			<column name="ShipAddressID" />
+		</property>
+		<property name="Date" type="timestamp">
+			<column name="date" />
+		</property>
+		<property name="code">
+			<column name="Code" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.store.Model.ShipAddress" table="SHIPADDRESS">
+		<id name="id" type="int" column="ID">
+			<generator class="assigned" />
+		</id>
+		<property name="clientID">
+			<column name="ClientID" />
+		</property>
+		<property name="fullName">
+			<column name="FullName" />
+		</property>
+		<property name="city">
+			<column name="City" />
+		</property>
+		<property name="state">
+			<column name="State" />
+		</property>
+		<property name="zip">
+			<column name="Zip" />
+		</property>
+		<property name="registrationDate" type="date">
+			<column name="RegistrationDate" />
+		</property>
+		<property name="phone">
+			<column name="Phone" />
+		</property>
+		<property name="country">
+			<column name="Country" />
+		</property>
+		<property name="address">
+			<column name="Address" />
+		</property>
+		<property name="address2">
+			<column name="Address2" />
+		</property>
+		<property name="active">
+			<column name="Active" />
+		</property>
+	</class>
+</hibernate-mapping>
