@@ -35,7 +35,7 @@ http://localhost:9021/
 
 Para executar o banco de dados MySQL utilizado no projeto, foi disponibilizado um Dockerfile capaz de iniciar um container com o MySQL e executar scripts de criação e inserção de dados.
 
-A pasta raiz do projeto possui a pasta [docker](docker)
+A pasta raiz do projeto possui a pasta [docker mysql](docker/mysql)
 ```sh
 cd docker
 docker build -t mysql-dropshipping .
@@ -49,3 +49,9 @@ Verifique se o container contendo o database está executando e pronto para exec
 ```sh
 mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p
 ```
+
+# Passo 3) Web API - API de serviços REST da POC (Sistema de vendas)
+
+# Passo 4) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
+
+# Passo 5) Consumidor - Aplicação que monitora eventos de entrega para informar os envolvidos (Sistema de vendas)
