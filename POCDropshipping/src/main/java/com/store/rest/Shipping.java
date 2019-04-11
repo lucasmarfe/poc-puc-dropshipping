@@ -35,7 +35,7 @@ public class Shipping {
 			POCBusiness.processDeliveryUpdate(cnpj, saleDTO);
 			return Response.status(200).entity(ResponseMessage.successUpdate()).build();
 		} catch (Exception e) {
-			return Response.status(200).entity(ResponseMessage.errorUpdate()).build();
+			return Response.status(500).entity(ResponseMessage.errorUpdate()).build();
 		}		
 	}
 
