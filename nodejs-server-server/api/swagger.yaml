@@ -1,0 +1,133 @@
+---
+swagger: "2.0"
+info:
+  description: "Este é o desenho de API's para a prova de conceito do sistema de controle\
+    \ de vendas na modalidade Dropshipping. São apresentadas apenas as duas interfaces\
+    \ utilizadas na POC para integração com o sistema de fornecedores."
+  version: "1.0.0"
+  title: "POC Dropshipping"
+host: "localhost:8080"
+basePath: "/POCDropshipping/rest"
+tags:
+- name: "shopping"
+  description: "Tudo relacionado a venda do produto na loja"
+- name: "shipping"
+  description: "Tudo relacionado ao despacho do produto pelo fornecedor"
+paths:
+  /shopping/get-sales/{cnpj}:
+    get:
+      tags:
+      - "shopping"
+      summary: "Busca as vendas para um fornecedor específico"
+      description: "Retorna a lista de produtos que precisam ser despachados pelo\
+        \ fornecedor especificado"
+      operationId: "getPetById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cnpj"
+        in: "path"
+        description: "CNPJ do fornecedor"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        500:
+          description: "server process error"
+      x-swagger-router-controller: "Shopping"
+  /shipping/delivery-update/{cnpj}:
+    post:
+      tags:
+      - "shipping"
+      summary: "Atualiza status do produto"
+      description: ""
+      operationId: "uploadFile"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "JSON contendo as informações de atualização do status de entrega"
+        required: true
+        schema:
+          $ref: "#/definitions/DeliveryUpdate"
+      - name: "cnpj"
+        in: "path"
+        description: "CNPJ to fornecedor"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        500:
+          description: "server process error"
+      x-swagger-router-controller: "Shipping"
+definitions:
+  ProductSold:
+    type: "object"
+    properties:
+      productCode:
+        type: "string"
+      orderCode:
+        type: "string"
+      orderDateTime:
+        type: "string"
+      quantity:
+        type: "integer"
+        format: "int64"
+      unitWeight:
+        type: "number"
+      shipFullName:
+        type: "string"
+      shipCity:
+        type: "string"
+      shipState:
+        type: "string"
+      shipZip:
+        type: "string"
+      shipPhone:
+        type: "string"
+      shipCountry:
+        type: "string"
+      shipAddress:
+        type: "string"
+      shipAddress2:
+        type: "string"
+  ApiResponse:
+    type: "array"
+    items:
+      $ref: "#/definitions/ProductSold"
+  DeliveryUpdate:
+    type: "object"
+    properties:
+      trackNumber:
+        type: "string"
+      status:
+        type: "string"
+      message:
+        type: "string"
+      clientId:
+        type: "integer"
+        format: "int64"
+      statusDateTime:
+        type: "string"
+      orderCode:
+        type: "string"
+      productCode:
+        type: "string"
+      providerCNPJ:
+        type: "string"
+    example:
+      clientId: 0
+      productCode: "productCode"
+      trackNumber: "trackNumber"
+      statusDateTime: "statusDateTime"
+      orderCode: "orderCode"
+      providerCNPJ: "providerCNPJ"
+      message: "message"
+      status: "status"

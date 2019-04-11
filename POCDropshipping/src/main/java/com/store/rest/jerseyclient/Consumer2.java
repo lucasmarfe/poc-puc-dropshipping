@@ -9,14 +9,10 @@ import java.util.Properties;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 
 import com.store.DTO.ProductSoldMessageDTO;
 import com.store.Kafka.KafkaJsonDeserializer;
-import com.store.Kafka.KafkaJsonSerializer;
 
 public class Consumer2 {
 	public static void main(String[] args) throws UnknownHostException {

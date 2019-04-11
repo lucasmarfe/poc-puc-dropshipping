@@ -12,7 +12,6 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.javatuples.Pair;
-import org.javatuples.Tuple;
 
 import com.store.DTO.ProductSoldMessageDTO;
 import com.store.Model.Client;
@@ -99,7 +98,6 @@ public class DBOperator {
 	
 	public Integer saveOrderAndGetInsertedId(Order order) {
 		Session session = null;
-		int id = 0;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.getTransaction().begin();

@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.store.DTO.DeliveryUpdateMessageDTO;
-
 public class MySQL {
 	static Connection conn = null;
 	static PreparedStatement statement = null;

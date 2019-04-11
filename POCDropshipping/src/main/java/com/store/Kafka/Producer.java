@@ -1,12 +1,8 @@
 package com.store.Kafka;
 
 import java.util.Properties;
-import java.util.Scanner;
 
-import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 
 public class Producer {
 

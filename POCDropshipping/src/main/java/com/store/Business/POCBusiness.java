@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.JsonNode;
-import org.codehaus.jettison.json.JSONObject;
 import org.javatuples.Pair;
 
 import com.store.DB.DBOperator;
@@ -17,7 +16,6 @@ import com.store.Kafka.KafkaConnect;
 import com.store.Model.Client;
 import com.store.Model.Order;
 import com.store.Model.OrderDetail;
-import com.store.Model.Product;
 import com.store.Model.Provider;
 import com.store.Model.Seller;
 import com.store.Model.ShipAddress;
