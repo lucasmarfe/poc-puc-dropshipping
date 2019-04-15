@@ -21,6 +21,7 @@ import com.store.Model.Product;
 import com.store.Model.Provider;
 import com.store.Model.Seller;
 import com.store.Model.ShipAddress;
+import com.store.Model.Token;
 import com.store.Util.HibernateUtil;
 
 public class DBOperator {
@@ -103,11 +104,6 @@ public class DBOperator {
             session.getTransaction().begin();
             session.save(order);
             session.getTransaction().commit();
-            //session.flush();
-            //session.update(order);
-            /*session.persist(order);
-            session.flush();
-            return order.getId();*/
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -215,5 +211,75 @@ public class DBOperator {
             }
         }
         return pair;
+	}
+
+	public Token getTokenByTokenString(String tokenString) {
+		Session session = null;
+		Token token = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.clear();
+            session.flush();
+            Criteria criteria = session.createCriteria(Token.class);
+            token = (Token) criteria.add(Restrictions.eq("token",tokenString)).uniqueResult();
+            Hibernate.initialize(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return token;
+	}
+	
+	public void saveToken(Token token) throws Exception{
+		Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.getTransaction().begin();
+            session.save(token);
+            session.getTransaction().commit();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+	}
+
+	public Client getClientByNameAndPassword(String email, String password) {
+		Session session = null;
+		Client client = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Criteria criteria = session.createCriteria(Client.class);
+            client = (Client) criteria.add(Restrictions.eq("email",email)).add(Restrictions.eq("password",password)).uniqueResult();
+            Hibernate.initialize(client);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return client;
+	}
+
+	public Provider getProviderByCnpjAndPassword(String cnpj, String password) {
+		Session session = null;
+		Provider provider = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Criteria criteria = session.createCriteria(Provider.class);
+            provider = (Provider) criteria.add(Restrictions.eq("CNPJ",cnpj)).add(Restrictions.eq("password",password)).uniqueResult();
+            Hibernate.initialize(provider);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return provider;
 	}
 }

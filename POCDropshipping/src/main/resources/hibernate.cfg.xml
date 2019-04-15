@@ -20,5 +20,6 @@
         <mapping resource="provider.hbm.xml" />
         <mapping resource="seller.hbm.xml" />
         <mapping resource="shipaddress.hbm.xml" />
+        <mapping resource="token.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

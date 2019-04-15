@@ -30,11 +30,10 @@ import com.store.Model.Seller;
 
 public class KafkaConnect {
 
-	private static Properties getProducerProperties() {
+	private static Properties getProducerProperties(boolean sslEnable) {
 		Properties producerProperties = new Properties();
 		producerProperties.put("bootstrap.servers", "localhost:29092");
 		producerProperties.put("acks", "all");
-		boolean sslEnable = false;
 		if (sslEnable ) {
 			producerProperties.put("ssl.truststore.location","/etc/kafka/secrets/kafka.producer.truststore.jks");
 			producerProperties.put("ssl.truststore.password","confluent");
@@ -50,13 +49,12 @@ public class KafkaConnect {
 		return producerProperties;
 	}
 
-	private static Properties getConsumerProperties(String groupId) throws UnknownHostException {
+	private static Properties getConsumerProperties(String groupId, boolean sslEnable) throws UnknownHostException {
 		Properties config = new Properties();
 		config.put("client.id", InetAddress.getLocalHost().getHostName());
 		config.put("group.id", groupId);
 		config.put("bootstrap.servers", "localhost:29092");
 		config.put("request.timeout.ms", "1");
-		boolean sslEnable = true;
 		if (sslEnable ) {
 			config.put("group.id", "ssl-host");
 			config.put("ssl.truststore.location",
@@ -73,7 +71,7 @@ public class KafkaConnect {
 	}
 
 	public void sendProductSoldMessage(String topic, List<ProductSoldMessageDTO> productSold) throws Exception{
-		KafkaProducer<String, ProductSoldMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(),
+		KafkaProducer<String, ProductSoldMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(true),
 				new StringSerializer(), new KafkaJsonSerializer());
 		try {
 			for (ProductSoldMessageDTO product : productSold) {
@@ -101,7 +99,7 @@ public class KafkaConnect {
 		try {
 			// config.put("key.deserializer", StringDeserializer.class.getName());
 			// config.put("value.deserializer", StringDeserializer.class.getName());
-			consumer = new KafkaConsumer<String, ProductSoldMessageDTO>(getConsumerProperties("group"+topicName_Orders),
+			consumer = new KafkaConsumer<String, ProductSoldMessageDTO>(getConsumerProperties("group"+topicName_Orders, true),
 					new StringDeserializer(),
 					new KafkaJsonDeserializer<ProductSoldMessageDTO>(ProductSoldMessageDTO.class));
 			consumer.subscribe(Arrays.asList(topicName_Orders));
@@ -122,7 +120,7 @@ public class KafkaConnect {
 	}
 
 	public void sendDeliveryUpdateMessage(Pair<Client, Seller> clientSeller, DeliveryUpdateDTO saleDTO, Provider provider) throws Exception {
-		KafkaProducer<String, DeliveryUpdateMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(),
+		KafkaProducer<String, DeliveryUpdateMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(true),
 				new StringSerializer(), new KafkaJsonSerializer());
 		try {
 				// Send a message

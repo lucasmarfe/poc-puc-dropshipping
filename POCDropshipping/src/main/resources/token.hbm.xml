@@ -2,21 +2,21 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.store.Model.Order" table="ORDERS">
+	<class name="com.store.Model.Token" table="TOKEN">
 		<id name="id" type="int" column="ID">
-			<generator class="increment" />
+			<generator class="assigned" />
 		</id>
-		<property name="ClientID">
-			<column name="ClientID" />
-		</property>
-		<property name="shipAddressID">
-			<column name="ShipAddressID" />
+		<property name="token">
+			<column name="Token" />
 		</property>
 		<property name="date" type="timestamp">
 			<column name="Date" />
 		</property>
-		<property name="code">
-			<column name="Code" />
+		<property name="clientID">
+			<column name="ClientID" />
+		</property>
+		<property name="providerID">
+			<column name="ProviderID" />
 		</property>
 	</class>
 </hibernate-mapping>

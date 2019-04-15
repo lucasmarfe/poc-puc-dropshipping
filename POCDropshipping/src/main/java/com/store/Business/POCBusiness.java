@@ -1,6 +1,9 @@
 package com.store.Business;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import static java.util.concurrent.TimeUnit.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +22,11 @@ import com.store.Model.OrderDetail;
 import com.store.Model.Provider;
 import com.store.Model.Seller;
 import com.store.Model.ShipAddress;
+import com.store.Model.Token;
 
 public class POCBusiness {
 	private static DBOperator db = new DBOperator();
+	private static long MAX_DURATION = MILLISECONDS.convert(20, MINUTES);
 	
 	public static void processSale(SaleDTO sale) throws Exception{
 		
@@ -52,5 +57,29 @@ public class POCBusiness {
 		Pair<Client, Seller> clientSeller = db.getClientByOrderCode(saleDTO.getOrderCode());
 		KafkaConnect kafka = new KafkaConnect();
 		kafka.sendDeliveryUpdateMessage(clientSeller, saleDTO, provider);
+	}
+	
+	public static String validateToken(String tokenString) throws Exception{
+		String returnMsg = null;
+		Token token = db.getTokenByTokenString(tokenString);
+		if(token == null) {
+			return "Invalid token!";
+		}
+		else if ((new Date().getTime() - token.getDate().getTime()) > MAX_DURATION) {
+			return "Token expired!";
+		}
+		return returnMsg;
+	}
+	
+	public static void saveToken(Token token) throws Exception{
+		db.saveToken(token);
+	}
+
+	public static Client getClientByNameAndPassword(String email, String password) {
+		return db.getClientByNameAndPassword(email,password);
+	}
+
+	public static Provider getProviderByCnpjAndPassword(String cnpj, String password) {
+		return db.getProviderByCnpjAndPassword(cnpj,password);
 	}
 }

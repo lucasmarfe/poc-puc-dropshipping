@@ -12,11 +12,12 @@ import org.codehaus.jettison.json.JSONException;
 import com.store.Business.POCBusiness;
 import com.store.DTO.DeliveryUpdateDTO;
 import com.store.DTO.ResponseMessage;
+import com.sun.jersey.spi.container.ResourceFilters;
 
 @Path("/shipping")
 public class Shipping {
-	
 	@POST
+	@ResourceFilters(AuthFilter.class)
 	@Path("/delivery-update/{cnpj}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deliveryUpdate( @PathParam("cnpj") String cnpj, DeliveryUpdateDTO saleDTO ) throws JSONException {

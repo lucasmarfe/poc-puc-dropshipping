@@ -56,4 +56,11 @@ public final class ResponseMessage {
 		json.put("Message", "Error on update message processing!");
 		return json;
 	}
+
+	public static Object errorKafkaSale() throws JSONException {
+		JSONObject json = new JSONObject();  
+		json.put("Status", "error");
+		json.put("Message", "Error sending message to the ESB!");
+		return json;
+	}
 }

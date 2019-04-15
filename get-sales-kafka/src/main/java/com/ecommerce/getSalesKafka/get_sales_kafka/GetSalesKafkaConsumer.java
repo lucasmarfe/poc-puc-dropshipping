@@ -41,7 +41,7 @@ public static void main(String[] args) throws UnknownHostException {
 		//config.put("key.deserializer", StringDeserializer.class.getName());
 		//config.put("value.deserializer", StringDeserializer.class.getName());
 		
-		KafkaConsumer<String, ProductSoldMessageDTO> consumer = new KafkaConsumer<String, ProductSoldMessageDTO>(getConsumerProperties(false),new StringDeserializer(), new KafkaJsonDeserializer<ProductSoldMessageDTO>(ProductSoldMessageDTO.class));
+		KafkaConsumer<String, ProductSoldMessageDTO> consumer = new KafkaConsumer<String, ProductSoldMessageDTO>(getConsumerProperties(true),new StringDeserializer(), new KafkaJsonDeserializer<ProductSoldMessageDTO>(ProductSoldMessageDTO.class));
 		consumer.subscribe(Arrays.asList("provider1_sale"));
 		try {
 			  while (true) {

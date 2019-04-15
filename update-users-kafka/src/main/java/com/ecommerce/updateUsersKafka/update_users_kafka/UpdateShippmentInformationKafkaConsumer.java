@@ -51,7 +51,7 @@ public class UpdateShippmentInformationKafkaConsumer {
 		//config.put("key.deserializer", StringDeserializer.class.getName());
 		//config.put("value.deserializer", StringDeserializer.class.getName());
 		
-		KafkaConsumer<String, DeliveryUpdateMessageDTO> consumer = new KafkaConsumer<String, DeliveryUpdateMessageDTO>(getConsumerProperties(false),new StringDeserializer(), new KafkaJsonDeserializer<DeliveryUpdateMessageDTO>(DeliveryUpdateMessageDTO.class));
+		KafkaConsumer<String, DeliveryUpdateMessageDTO> consumer = new KafkaConsumer<String, DeliveryUpdateMessageDTO>(getConsumerProperties(true),new StringDeserializer(), new KafkaJsonDeserializer<DeliveryUpdateMessageDTO>(DeliveryUpdateMessageDTO.class));
 		consumer.subscribe(Arrays.asList("provider1_shipping","provider2_shipping","provider3_shipping","provider4_shipping"));
 		try {
 			  while (true) {
@@ -83,7 +83,38 @@ public class UpdateShippmentInformationKafkaConsumer {
 	}
 
 	private static void sendEmailSeller(String toEmail, DeliveryUpdateMessageDTO msg) {
-		// TODO Auto-generated method stub
+		String from = "ecommerce@gmail.com";
+
+	      String host = "localhost";
+
+	      Properties properties = System.getProperties();
+
+	      properties.setProperty("mail.smtp.host", host);
+	      
+	      Session session = Session.getDefaultInstance(properties);
+	      
+	      try {
+	          // Create a default MimeMessage object.
+	          MimeMessage message = new MimeMessage(session);
+
+	          // Set From: header field of the header.
+	          message.setFrom(new InternetAddress(from));
+
+	          // Set To: header field of the header.
+	          message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+
+	          // Set Subject: header field
+	          message.setSubject("Seller - Update shippment of order: " + msg.getOrderCode());
+
+	          // Now set the actual message
+	          message.setText("The provider updated the status of your order.\nNew status: " + msg.getStatus() + " at: " + msg.getStatusDateTime() + "\n Track number: " + msg.getTrackNumber());
+
+	          // Send message
+	          Transport.send(message);
+	          System.out.println("Message sent successfully....");
+	       } catch (MessagingException mex) {
+	          mex.printStackTrace();
+	       }
 		
 	}
 
