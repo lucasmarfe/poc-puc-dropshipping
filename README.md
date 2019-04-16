@@ -55,9 +55,13 @@ mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p
 # Passo 3) Documentação da Web API - Serviços REST externos da POC
 
 # Passo 4) Web API - API de serviços REST da POC (Sistema de vendas)
+É possível executar a aplicação a partir do código fonte disponível em: [POCDropshipping](POCDropshipping) executando-a num servidor Apache Tomcat 9.0
+
+Também é possível fazer o deploy do war da web no Apache Tomcat 9.0 por meio do war disponibilizado em: [POCDropshipping WAR](jars/POCDropshipping.war)
 
 # Passo 5) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
 É possível executar a aplicação a partir do código fonte disponível em: [get sales](get-sales-kafka)
+
 Também é possível e recomendado executar a aplicação diretamente no terminal a partir do jar disponível em: [get sales jar](jars/getSales.jar)
 É necessário enviar como argumentos o nome dos tópicos aos quais o processo fará subscriber. Exemplo de uso:
 ```sh
