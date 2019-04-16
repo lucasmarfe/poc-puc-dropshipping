@@ -30,7 +30,7 @@ public class Authentication {
             return Response.ok(token).build();
 
         } catch (Exception e) {
-            return Response.status(Response.Status.FORBIDDEN).build();
+            return Response.status(Response.Status.FORBIDDEN).tag("Client not found").build();
         }      
     }
     
@@ -47,7 +47,7 @@ public class Authentication {
             return Response.ok(token).build();
 
         } catch (Exception e) {
-            return Response.status(Response.Status.FORBIDDEN).build();
+            return Response.status(Response.Status.FORBIDDEN).tag("Provider not found").build();
         }      
     }
 

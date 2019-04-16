@@ -17,6 +17,7 @@ public class Provider {
 	private String address;
 	private String address2;
 	private String CNPJ;
+	private String password;
 	private String topicName_Orders;
 	private String topicName_Shipping;
 	
@@ -139,6 +140,15 @@ public class Provider {
 
 	public void setTopicName_Shipping(String topicName_Shipping) {
 		this.topicName_Shipping = topicName_Shipping;
+	}
+	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override

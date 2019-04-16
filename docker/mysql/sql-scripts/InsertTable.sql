@@ -9,11 +9,11 @@ INSERT INTO ecommerce.CLIENTS (SellerID, Email, Password, FullName, CPF, Registr
 (2, 'test_drop_client4@gmail.com', 'XXXXX', 'Cliente 4', '00000000004', CURRENT_TIMESTAMP, 'Brasil', '30000004', '900000004'),
 (NULL, 'test_drop_client5@gmail.com', 'XXXXX', 'Cliente 5', '00000000005', CURRENT_TIMESTAMP, 'Brasil', '30000005', '900000005');
 
-INSERT INTO ecommerce.PROVIDERS (Name, City, State, Zip, Email, RegistrationDate, Phone, Fax, Country, Address, Address2, CNPJ, TopicName_Orders, TopicName_Shipping) VALUES
-('Provider 1', 'Belo Horizonte', 'Minas Gerais', '30000001', 'test_drop_prov1@gmail.com', CURRENT_TIMESTAMP, '3133333331', '3133333331', 'Brasil', 'Rua X1, 1', '','00000000001','provider1_sale', 'provider1_shipping'),
-('Provider 2', 'Belo Horizonte', 'Minas Gerais', '30000002', 'test_drop_prov2@gmail.com', CURRENT_TIMESTAMP, '3133333332', '3133333332', 'Brasil', 'Rua X1, 2', '', '00000000002','provider2_sale', 'provider2_shipping'),
-('Provider 3', 'Montes claros', 'Minas Gerais', '30000003', 'test_drop_prov3@gmail.com', CURRENT_TIMESTAMP, '3133333333', '3133333333', 'Brasil', 'Rua X1, 3', '', '00000000003','provider3_sale', 'provider3_shipping'),
-('Provider 4', 'Diamantina', 'Minas Gerais', '30000004', 'test_drop_prov4@gmail.com', CURRENT_TIMESTAMP, '3133333334', '3133333334', 'Brasil', 'Rua X1, 4', '', '00000000004','provider4_sale', 'provider4_shipping');
+INSERT INTO ecommerce.PROVIDERS (Name, City, State, Zip, Email, RegistrationDate, Phone, Fax, Country, Address, Address2, CNPJ, Password, TopicName_Orders, TopicName_Shipping) VALUES
+('Provider 1', 'Belo Horizonte', 'Minas Gerais', '30000001', 'test_drop_prov1@gmail.com', CURRENT_TIMESTAMP, '3133333331', '3133333331', 'Brasil', 'Rua X1, 1', '','00000000001','XXX','provider1_sale', 'provider1_shipping'),
+('Provider 2', 'Belo Horizonte', 'Minas Gerais', '30000002', 'test_drop_prov2@gmail.com', CURRENT_TIMESTAMP, '3133333332', '3133333332', 'Brasil', 'Rua X1, 2', '', '00000000002','XXX','provider2_sale', 'provider2_shipping'),
+('Provider 3', 'Montes claros', 'Minas Gerais', '30000003', 'test_drop_prov3@gmail.com', CURRENT_TIMESTAMP, '3133333333', '3133333333', 'Brasil', 'Rua X1, 3', '', '00000000003','XXX','provider3_sale', 'provider3_shipping'),
+('Provider 4', 'Diamantina', 'Minas Gerais', '30000004', 'test_drop_prov4@gmail.com', CURRENT_TIMESTAMP, '3133333334', '3133333334', 'Brasil', 'Rua X1, 4', '', '00000000004','XXX','provider4_sale', 'provider4_shipping');
 
 INSERT INTO ecommerce.SHIPADDRESS (ClientID, FullName, City, State, Zip, RegistrationDate, Phone, Country, Address, Address2, Active) VALUES
 (1, 'Client 1 - FullName 1', 'Aracaju', 'Sergipe', '30000001', CURRENT_TIMESTAMP, '79000000001', 'Brasil', 'Rua A 15', 'Ap 101', 1),

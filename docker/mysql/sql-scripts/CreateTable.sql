@@ -101,7 +101,8 @@ CREATE TABLE IF NOT EXISTS `PROVIDERS` (
   `Country` varchar(20) DEFAULT NULL,
   `Address` varchar(100) DEFAULT NULL,
   `Address2` varchar(50) DEFAULT NULL,
-  `CNPJ` varchar(50) DEFAULT NULL,
+  `CNPJ` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
   `TopicName_Orders` varchar(50) DEFAULT NULL,
   `TopicName_Shipping` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`)

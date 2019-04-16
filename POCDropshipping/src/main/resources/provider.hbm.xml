@@ -42,6 +42,9 @@
 		<property name="CNPJ">
 			<column name="CNPJ" />
 		</property>
+		<property name="password">
+			<column name="Password" />
+		</property>
 		<property name="topicName_Orders">
 			<column name="TopicName_Orders" />
 		</property>
