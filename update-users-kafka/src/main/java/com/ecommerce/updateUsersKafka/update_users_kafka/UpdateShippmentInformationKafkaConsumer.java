@@ -48,9 +48,6 @@ public class UpdateShippmentInformationKafkaConsumer {
 	
 	public static void main(String[] args) throws UnknownHostException {
 		
-		//config.put("key.deserializer", StringDeserializer.class.getName());
-		//config.put("value.deserializer", StringDeserializer.class.getName());
-		
 		KafkaConsumer<String, DeliveryUpdateMessageDTO> consumer = new KafkaConsumer<String, DeliveryUpdateMessageDTO>(getConsumerProperties(false),new StringDeserializer(), new KafkaJsonDeserializer<DeliveryUpdateMessageDTO>(DeliveryUpdateMessageDTO.class));
 		consumer.subscribe(Arrays.asList("provider1_shipping","provider2_shipping","provider3_shipping","provider4_shipping"));
 		try {
