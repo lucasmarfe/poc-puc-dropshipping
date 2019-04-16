@@ -54,6 +54,15 @@ mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p
 ```
 # Passo 3) Documentação da Web API - Serviços REST externos da POC
 
+Acessar a pasta referente ao servidor node contendo a documentação em:[Documentação REST](nodejs-server-server)
+
+Executar os comandos para subir um container docker:
+```sh
+docker build -t pocdropshipping-doc/node-web-app .
+docker run -p 49160:8080 -d pocdropshipping-doc/node-web-app
+```
+Acessar a documentação em: http://localhost:49160/docs/
+
 # Passo 4) Web API - API de serviços REST da POC (Sistema de vendas)
 É possível executar a aplicação a partir do código fonte disponível em: [POCDropshipping](POCDropshipping) executando-a num servidor Apache Tomcat 9.0
 
