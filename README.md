@@ -82,3 +82,6 @@ Inicialmente é interessante gerar um servidor fake SMTP para verificar se os em
 ```sh
 sudo java -jar fakeSMTP-2.0.jar
 ```
+Posteriormente, é possível executar a aplicação a partir do código fonte disponível em: [update-users-kafka](update-users-kafka)
+
+Também é possível e recomendado executar a aplicação diretamente no terminal a partir do jar disponível em: [update-status jar](jars/updateStatus.jar)
