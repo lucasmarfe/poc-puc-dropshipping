@@ -68,6 +68,8 @@ Acessar a documentação em: http://localhost:49160/docs/
 
 Também é possível fazer o deploy do war da web no Apache Tomcat 9.0 por meio do war disponibilizado em: [POCDropshipping WAR](jars/POCDropshipping.war)
 
+A API deverá estar disponível no caminho: https://localhost:8443/POCDropshipping/rest
+
 # Passo 5) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
 É possível executar a aplicação a partir do código fonte disponível em: [get sales](get-sales-kafka)
 
@@ -85,3 +87,8 @@ sudo java -jar fakeSMTP-2.0.jar
 Posteriormente, é possível executar a aplicação a partir do código fonte disponível em: [update-users-kafka](update-users-kafka)
 
 Também é possível e recomendado executar a aplicação diretamente no terminal a partir do jar disponível em: [update-status jar](jars/updateStatus.jar)
+
+# Passo 8) Executar as chamadas à API
+- Chamada a API de informe de compras. Origem: Camada de apresentação. Caminho: POST shopping/buy
+- Chamada a API de obtenção de vendas. Origem: Sistema de Fornecedores. Caminho: GET /shopping/get-sales/{cnpj}
+- Chamada a API de atualização de status de entrega. Origem: Sistema de Fornecedores. Caminho: POST /shipping/delivery-update/{cnpj}
