@@ -59,7 +59,11 @@ mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p
 # Passo 5) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
 É possível executar a aplicação a partir do código fonte disponível em: [get sales](get-sales-kafka)
 Também é possível e recomendado executar a aplicação diretamente no terminal a partir do jar disponível em: [get sales jar](jars/getSales.jar)
-
+É necessário enviar como argumentos o nome dos tópicos aos quais o processo fará subscriber. Exemplo de uso:
+```sh
+sudo java -jar getSales.jar provider3_sale
+```
 # Passo 6) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
 
 # Passo 7) Consumidor - Aplicação que monitora eventos de entrega para informar os envolvidos (Sistema de vendas)
+sudo java -jar fakeSMTP-2.0.jar 
