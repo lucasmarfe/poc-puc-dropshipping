@@ -52,9 +52,9 @@ public class KafkaConnect {
 	private static Properties getConsumerProperties(String groupId, boolean sslEnable) throws UnknownHostException {
 		Properties config = new Properties();
 		config.put("client.id", InetAddress.getLocalHost().getHostName());
-		config.put("group.id", groupId);
+		config.put("group.id", "None");
 		config.put("bootstrap.servers", "localhost:29092");
-		config.put("request.timeout.ms", "1");
+		//config.put("request.timeout.ms", "10");
 		if (sslEnable ) {
 			config.put("group.id", "ssl-host");
 			config.put("ssl.truststore.location",
@@ -71,7 +71,7 @@ public class KafkaConnect {
 	}
 
 	public void sendProductSoldMessage(String topic, List<ProductSoldMessageDTO> productSold) throws Exception{
-		KafkaProducer<String, ProductSoldMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(true),
+		KafkaProducer<String, ProductSoldMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(false),
 				new StringSerializer(), new KafkaJsonSerializer());
 		try {
 			for (ProductSoldMessageDTO product : productSold) {
@@ -99,7 +99,7 @@ public class KafkaConnect {
 		try {
 			// config.put("key.deserializer", StringDeserializer.class.getName());
 			// config.put("value.deserializer", StringDeserializer.class.getName());
-			consumer = new KafkaConsumer<String, ProductSoldMessageDTO>(getConsumerProperties("group"+topicName_Orders, true),
+			consumer = new KafkaConsumer<String, ProductSoldMessageDTO>(getConsumerProperties("group"+topicName_Orders, false),
 					new StringDeserializer(),
 					new KafkaJsonDeserializer<ProductSoldMessageDTO>(ProductSoldMessageDTO.class));
 			consumer.subscribe(Arrays.asList(topicName_Orders));
@@ -120,7 +120,7 @@ public class KafkaConnect {
 	}
 
 	public void sendDeliveryUpdateMessage(Pair<Client, Seller> clientSeller, DeliveryUpdateDTO saleDTO, Provider provider) throws Exception {
-		KafkaProducer<String, DeliveryUpdateMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(true),
+		KafkaProducer<String, DeliveryUpdateMessageDTO> kafkaProducer = new KafkaProducer<>(getProducerProperties(false),
 				new StringSerializer(), new KafkaJsonSerializer());
 		try {
 				// Send a message

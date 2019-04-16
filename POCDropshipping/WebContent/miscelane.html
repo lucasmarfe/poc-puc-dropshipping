@@ -14,3 +14,8 @@ mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p
 /home/lucas/Documents/commom-jars
 executar:
 sudo java -jar fakeSMTP-2.0.jar 
+
+--Confluent
+docker-compose up -d --build
+docker container ls -aq
+docker container stop $(docker container ls -a -q) && docker system prune -a -f --volumes

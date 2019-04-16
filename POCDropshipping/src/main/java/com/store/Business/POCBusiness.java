@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.core.Response;
+
 import org.codehaus.jackson.JsonNode;
 import org.javatuples.Pair;
 
@@ -63,10 +65,10 @@ public class POCBusiness {
 		String returnMsg = null;
 		Token token = db.getTokenByTokenString(tokenString);
 		if(token == null) {
-			return "Invalid token!";
+			return Response.Status.UNAUTHORIZED + " - Invalid token!";
 		}
 		else if ((new Date().getTime() - token.getDate().getTime()) > MAX_DURATION) {
-			return "Token expired!";
+			return Response.Status.UNAUTHORIZED + " - Token expired!";
 		}
 		return returnMsg;
 	}

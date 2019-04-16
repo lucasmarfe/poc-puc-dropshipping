@@ -6,7 +6,7 @@ import java.util.Date;
 public class ProductSoldMessageDTO {
 	private String productCode;
 	private String orderCode;
-	private Date orderDateTime;
+	private String orderDateTime;
 	private int quantity;
 	private Float unitWeight;
 	private String shipFullName;
@@ -26,9 +26,10 @@ public class ProductSoldMessageDTO {
 	public ProductSoldMessageDTO(String productCode, String orderCode, Date orderDateTime, int quantity, Float unitWeight, String shipFullName, String shipCity,
 			String shipState, String shipZip, String shipPhone, String shipCountry, String shipAddress, String shipAddress2) {
 		super();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		this.productCode = productCode;
 		this.orderCode = orderCode;
-		this.orderDateTime = orderDateTime;
+		this.orderDateTime = sdf.format(orderDateTime);
 		this.quantity = quantity;
 		this.unitWeight = unitWeight;
 		this.shipFullName = shipFullName;
@@ -138,12 +139,22 @@ public class ProductSoldMessageDTO {
 	public void setOrderCode(String orderCode) {
 		this.orderCode = orderCode;
 	}
+	
+	
+
+	public String getOrderDateTime() {
+		return orderDateTime;
+	}
+
+	public void setOrderDateTime(String orderDateTime) {
+		this.orderDateTime = orderDateTime;
+	}
 
 	@Override
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		return new StringBuffer(" Order Code : ").append(this.orderCode)
-				.append(" DateTime Order : ").append(sdf.format(this.orderDateTime))
+				.append(" DateTime Order : ").append(this.orderDateTime)
 				.append(" Quantity : ").append(this.quantity)
 				.append(" Weight : ").append(this.unitWeight)
 				.append(" Full Name : ").append(this.shipFullName)
