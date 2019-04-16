@@ -76,7 +76,9 @@ Também é possível e recomendado executar a aplicação diretamente no termina
 ```sh
 sudo java -jar getSales.jar provider3_sale
 ```
-# Passo 6) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
 
 # Passo 7) Consumidor - Aplicação que monitora eventos de entrega para informar os envolvidos (Sistema de vendas)
-sudo java -jar fakeSMTP-2.0.jar 
+Inicialmente é interessante gerar um servidor fake SMTP para verificar se os emails seriam enviados. Para isso é necessário rodar a aplicação [Fake SMTP ] (http://nilhcem.com/FakeSMTP/). O jar foi disponibilizado em: [fakeSMTP jar] (jars/fakeSMTP-2.0.jar). Portanto, basta executar:
+```sh
+sudo java -jar fakeSMTP-2.0.jar
+```
