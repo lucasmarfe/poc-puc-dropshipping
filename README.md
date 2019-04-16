@@ -38,20 +38,28 @@ Para executar o banco de dados MySQL utilizado no projeto, foi disponibilizado u
 A pasta raiz do projeto possui a pasta [docker mysql](docker/mysql)
 ```sh
 cd docker
+
+docker stop mysql-dropshipping && \
+docker rm mysql-dropshipping && \
+docker rmi mysql-dropshipping
+
 docker build -t mysql-dropshipping .
 docker run -d -p 3306:3306 --name mysql-dropshipping -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_ROOT_HOST=% mysql-dropshipping
 ```    
-Aguarde o container estar apto a receber solicitações, visualizando os logs do docker:
-```sh
-docker logs -f mysql-dropshipping
-```
+Aguarde o container estar apto a receber solicitações
+
 Verifique se o container contendo o database está executando e pronto para executar tarefas (Senha setada nos passos anteriores):
 ```sh
 mysql -h localhost -P 3306 --protocol=tcp -D ecommerce -u java -p
 ```
+# Passo 3) Documentação da Web API - Serviços REST externos da POC
 
-# Passo 3) Web API - API de serviços REST da POC (Sistema de vendas)
+# Passo 4) Web API - API de serviços REST da POC (Sistema de vendas)
 
-# Passo 4) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
+# Passo 5) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
+É possível executar a aplicação a partir do código fonte disponível em: [get sales](get-sales-kafka)
+Também é possível e recomendado executar a aplicação diretamente no terminal a partir do jar disponível em: [get sales jar](jars/getSales.jar)
 
-# Passo 5) Consumidor - Aplicação que monitora eventos de entrega para informar os envolvidos (Sistema de vendas)
+# Passo 6) Consumidor - Aplicação que obtem os dados da venda de produtos (Fornecedores)
+
+# Passo 7) Consumidor - Aplicação que monitora eventos de entrega para informar os envolvidos (Sistema de vendas)
